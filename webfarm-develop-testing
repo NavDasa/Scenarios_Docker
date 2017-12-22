@@ -35,7 +35,7 @@ Fallow the steps one by one:
 --> docker commit <containerID> centos6:baseweb (Now it allows the services,web are commited to centos6:baseweb, we can also go back and see.
 
 --> docker images
---> docker run -i -t centos6:baseweb /bin/bash --> we can see that everything is Ok
+--> docker run -i -t centos6:baseweb /bin/bash --> we can see that everything is Ok (Used for testing purpose)
 	can seee : unrecoginezed service.
 
 --> service sshd start
@@ -46,7 +46,7 @@ Fallow the steps one by one:
 --> docker start <contanier ID>
 --> docker attach <container ID>
 
---> vi .bashrc
+--> vi ~/.bashrc
 	# change again back to from openssh-server to sshd and remaining will be same
 	/sbin/service sshd start
 --> exit
@@ -151,9 +151,11 @@ docker www --> git status
 	--> git clone root@localhost:/root/docker/docker.git dockerwww
 	--> ll  (we get the replica of dockergit to dockerwww)
 	--> dockerwww (we can see) 
-In this dockerwww --> dockerimages
+In this dockerwww --> dockerimages 
 
-docker www--> docker run -d -i -t --name=devweb1 -p 8081:80 -v /root/docker/dockerwww: /var/www/html centos6:finalwebv1 /bin/bash
+The above Just describes an Just for checking. Starts from Now:
+
+docker www--> docker run -d -i -t --name=devweb1 -p 8081:80 -v /root/docker/dockerwww:/var/www/html centos6:finalwebv1 /bin/bash
 
 Here for the above command we can see the ports mapped to port 8081, there we can see our website.
 
@@ -166,9 +168,10 @@ Here for the above command we can see the ports mapped to port 8081, there we ca
 
 For Example: 
 
---> yum install nginx
---> service nginx start
---> localhost
+--> sudo yum install epel-release
+--> sudo yum install nginx
+--> sudo systemctl start nginx
+--> sudo systemctl enable nginx
 
 --> Create a proxy : port 80 by going to 
 
