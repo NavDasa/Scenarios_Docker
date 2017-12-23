@@ -11,6 +11,8 @@ Here in this below Example we pull the image and then based on that image we bui
 
 Steps:
 
+--> su -root
+
 --> docker images
 --> cd docker
 --> mkdir downloads
